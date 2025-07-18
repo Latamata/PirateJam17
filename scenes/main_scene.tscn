@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=4 uid="uid://bkyt6pj43x7yy"]
+[gd_scene load_steps=9 format=4 uid="uid://bkyt6pj43x7yy"]
 
 [ext_resource type="Script" uid="uid://b161locme488k" path="res://scripts/main_scene.gd" id="1_pu3yx"]
 [ext_resource type="PackedScene" uid="uid://bmeiv1c8q5tey" path="res://addons/dialogue/scenes/dialogue_manager.tscn" id="2_gubc5"]
 [ext_resource type="PackedScene" uid="uid://dnrcj1mhyy4b3" path="res://addons/dialogue/scenes/dialogue.tscn" id="3_rt2n2"]
 [ext_resource type="Texture2D" uid="uid://d4mkej1xvcs5y" path="res://assets/tilemap.png" id="4_c16ls"]
 [ext_resource type="PackedScene" uid="uid://c7w2g3xl1aqus" path="res://scenes/player.tscn" id="5_gubc5"]
+[ext_resource type="PackedScene" uid="uid://c647yt33cjux2" path="res://scenes/enemy_book.tscn" id="6_rt2n2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8mm7a"]
 texture = ExtResource("4_c16ls")
@@ -158,3 +159,6 @@ tile_set = SubResource("TileSet_hq1ik")
 [node name="player" parent="." instance=ExtResource("5_gubc5")]
 
 [node name="Camera2D" type="Camera2D" parent="player"]
+
+[node name="Enemy_book" parent="." instance=ExtResource("6_rt2n2")]
+position = Vector2(54, 127)

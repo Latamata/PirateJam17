@@ -11,5 +11,6 @@ config_version=5
 [application]
 
 config/name="PirateSoftwarJam17"
+run/main_scene="uid://bkyt6pj43x7yy"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"

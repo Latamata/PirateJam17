@@ -3,8 +3,6 @@
 [ext_resource type="Texture2D" uid="uid://cesq8tmabbqrj" path="res://assets/Enemy_book.png" id="1_7jhel"]
 [ext_resource type="Script" uid="uid://75e64ol7big2" path="res://scripts/enemy_book.gd" id="1_eon87"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_eon87"]
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_eon87"]
 atlas = ExtResource("1_7jhel")
 region = Rect2(0, 0, 50, 50)
@@ -34,11 +32,11 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eon87"]
+size = Vector2(50, 50)
+
 [node name="Enemy_book" type="CharacterBody2D"]
 script = ExtResource("1_eon87")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_eon87")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_y2mej")
@@ -48,5 +46,8 @@ frame_progress = 0.80122
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
 autostart = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_eon87")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

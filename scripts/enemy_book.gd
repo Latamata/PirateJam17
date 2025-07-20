@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-signal split_into_pages
+signal split_into_pages(book_position: Vector2)
 # Variables
 var direction = Vector2.RIGHT
 var SPEED = 50.0
@@ -11,7 +11,7 @@ func _process(_delta):
 		move_and_slide()
 
 func GDD_broken():
-	emit_signal('split_into_pages')
+	emit_signal('split_into_pages', global_position)
 	queue_free()
 
 func _on_timer_timeout() -> void:

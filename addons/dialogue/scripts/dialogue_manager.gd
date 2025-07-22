@@ -100,7 +100,7 @@ func _process(delta: float) -> void:
 
 func advance_message():
 	message_position += 1
-	print('running')
+	#print('running')
 	if message_position >= messages.size():
 		#queue_free()
 		return

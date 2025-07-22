@@ -56,3 +56,7 @@ position = Vector2(0, -7)
 sprite_frames = SubResource("SpriteFrames_fjrip")
 animation = &"idle"
 frame_progress = 0.774361
+
+[node name="jump_timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="jump_timer" to="." method="_on_jump_timer_timeout"]

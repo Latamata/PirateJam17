@@ -34,5 +34,4 @@ func _on_level_door_body_entered(body: Node2D) -> void:
 
 func _on_world_boundry_body_entered(body: Node2D) -> void:
 	if body.is_in_group('player'):
-		body.queue_free()
-		print('player died')
+		body.global_position = $player_spawn.global_position

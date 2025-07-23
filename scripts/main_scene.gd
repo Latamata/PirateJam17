@@ -7,13 +7,25 @@ extends Node2D
 @onready var dialogue_manager: Node2D = $dialogue_manager
 var player_dialogue_range = false
 
-func split_book_spawns(position_of_book):
+func split_book_spawns(position_of_book: Vector2):
 	var musketman_instance = crap_page.instantiate()
 	musketman_instance.global_position = position_of_book
 	$enemy_group_node.add_child(musketman_instance)
 
+
 func _on_enemy_book_split_into_pages(book_position: Vector2) -> void:
-	split_book_spawns(book_position)
+	print('running')
+	var starting_position = Vector2(-200, -90)
+	var row_offset = Vector2(50, 0)
+	var column_offset = Vector2(50, 50)
+	var column_height = 2
+
+	for i in range(8):
+		var row = i % column_height
+		var column = floori(float(i) / float(column_height))
+		var spawn_pos = starting_position + column * column_offset + row * row_offset
+		split_book_spawns(spawn_pos)
+
 
 func _on_npc_player_pressed() -> void:
 	player_dialogue_range = true
@@ -22,7 +34,8 @@ func _input(_event):
 	if Input.is_action_pressed('player_action'):
 		if player_dialogue_range:
 			#print('in range of dialogeu')
-			$dialogue_manager.start('dialogue')
+			#print(dialogue_manager)
+			dialogue_manager.start('dialogue')
 			player_dialogue_range = false
 
 func change_scene():

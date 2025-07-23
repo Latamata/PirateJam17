@@ -172,7 +172,7 @@ tile_map_data = PackedByteArray("AAAAAAMAAgAAAAAAAAABAAMAAgAAAAAAAAACAAMAAgAAAAA
 tile_set = SubResource("TileSet_hq1ik")
 
 [node name="player" parent="." instance=ExtResource("5_gubc5")]
-position = Vector2(758, -10)
+position = Vector2(57, -20)
 
 [node name="Camera2D" type="Camera2D" parent="player"]
 
@@ -188,7 +188,7 @@ position = Vector2(54, 127)
 position = Vector2(234, -4)
 
 [node name="dialogue_manager" parent="." instance=ExtResource("2_gubc5")]
-position = Vector2(-77, 317)
+position = Vector2(-359, -174)
 
 [node name="dialogue" parent="dialogue_manager" instance=ExtResource("3_rt2n2")]
 

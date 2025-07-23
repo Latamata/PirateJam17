@@ -92,7 +92,7 @@ func start(chosen_dialogue: String):
 		advance_message()
 
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("ui_accept"):
+	if Input.is_action_just_pressed("player_action"):
 		if style == 0 and not auto_skip and not selecting_choice.condition:
 			advance_message()
 		elif style == 1 and not auto_skip:

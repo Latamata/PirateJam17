@@ -8,7 +8,7 @@ extends CharacterBody2D
 func _process(delta):
 	if not is_on_floor():
 		velocity.y += gravity * delta
-	if is_on_wall():
+	if is_on_wall() and not is_on_floor():
 		velocity.y = velocity.y * 0.5
 	if Input.is_action_pressed("ui_accept") and (is_on_floor() or is_on_wall()) && can_jump:
 		velocity.y = jump_velocity

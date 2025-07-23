@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 @export var move_speed: float = 200.0
-@export var jump_velocity: float = -200.0
+@export var jump_velocity: float = -250.0
 @export var gravity: float = 1000.0
 @export var can_jump: bool = true
 
@@ -22,7 +22,5 @@ func _process(delta):
 	velocity.x = direction * move_speed
 	move_and_slide()
 
-
 func _on_jump_timer_timeout() -> void:
 	can_jump = true
-	#print('rnianndf')

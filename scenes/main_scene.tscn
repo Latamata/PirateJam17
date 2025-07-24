@@ -1,8 +1,6 @@
-[gd_scene load_steps=12 format=4 uid="uid://bkyt6pj43x7yy"]
+[gd_scene load_steps=10 format=4 uid="uid://bkyt6pj43x7yy"]
 
 [ext_resource type="Script" uid="uid://b161locme488k" path="res://scripts/main_scene.gd" id="1_pu3yx"]
-[ext_resource type="PackedScene" uid="uid://bmeiv1c8q5tey" path="res://addons/dialogue/scenes/dialogue_manager.tscn" id="2_gubc5"]
-[ext_resource type="PackedScene" uid="uid://dnrcj1mhyy4b3" path="res://addons/dialogue/scenes/dialogue.tscn" id="3_rt2n2"]
 [ext_resource type="Texture2D" uid="uid://bn81d75fm5rj0" path="res://assets/brackeys_platformer_assets/sprites/world_tileset.png" id="4_rt2n2"]
 [ext_resource type="PackedScene" uid="uid://c7w2g3xl1aqus" path="res://scenes/player.tscn" id="5_gubc5"]
 [ext_resource type="PackedScene" uid="uid://c647yt33cjux2" path="res://scenes/enemy_book.tscn" id="6_rt2n2"]
@@ -175,10 +173,6 @@ tile_set = SubResource("TileSet_hq1ik")
 position = Vector2(57, -20)
 
 [node name="Camera2D" type="Camera2D" parent="player"]
-zoom = Vector2(3, 3)
-
-[node name="dialogue_node" type="Node2D" parent="player"]
-position = Vector2(0, -6)
 
 [node name="Enemy_book" parent="." instance=ExtResource("6_rt2n2")]
 position = Vector2(54, 127)
@@ -187,11 +181,6 @@ position = Vector2(54, 127)
 
 [node name="NPC" parent="." instance=ExtResource("7_c16ls")]
 position = Vector2(234, -4)
-
-[node name="dialogue_manager" parent="." instance=ExtResource("2_gubc5")]
-position = Vector2(-359, -174)
-
-[node name="dialogue" parent="dialogue_manager" instance=ExtResource("3_rt2n2")]
 
 [node name="level_door" type="Area2D" parent="."]
 
@@ -212,6 +201,8 @@ position = Vector2(73, 232)
 shape = SubResource("WorldBoundaryShape2D_c16ls")
 
 [node name="player_spawn" type="Marker2D" parent="."]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [connection signal="split_into_pages" from="Enemy_book" to="." method="_on_enemy_book_split_into_pages"]
 [connection signal="player_pressed" from="NPC" to="." method="_on_npc_player_pressed"]

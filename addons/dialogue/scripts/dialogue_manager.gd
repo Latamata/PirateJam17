@@ -100,9 +100,10 @@ func _process(delta: float) -> void:
 
 func advance_message():
 	message_position += 1
-	#print('running')
+
 	if message_position >= messages.size():
 		queue_free()
+		print('running')
 		return
 
 	var dialogue = messages[message_position].split(separator)

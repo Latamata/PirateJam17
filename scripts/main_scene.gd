@@ -3,17 +3,13 @@ extends Node2D
 
 @onready var camera_2d: Camera2D = $player/Camera2D
 @onready var player: CharacterBody2D = $player
-@onready var dialogue_manager: Node2D = $dialogue_manager
 var player_dialogue_range = false
-#
-#func split_book_spawns(position_of_book: Vector2):
-	#var musketman_instance = crap_page.instantiate()
-	#musketman_instance.global_position = position_of_book
-	#$enemy_group_node.add_child(musketman_instance)
-
-
+#@onready var dialogue_manager: Node2D = $CanvasLayer/dialogue_manager
+const DIALOGUE_MANAGER = preload("res://addons/dialogue/scenes/dialogue_manager.tscn")
+const DIALOGUE = preload("res://addons/dialogue/scenes/dialogue.tscn")
+#func _ready() -> void:
+	#$CanvasLayer/dialogue_manager.start('dialogue')
 func _on_enemy_book_split_into_pages(book_position: Vector2) -> void:
-	print('running')
 	var starting_position = Vector2(-200, -90)
 	var row_offset = Vector2(50, 0)
 	var column_offset = Vector2(50, 50)
@@ -29,14 +25,23 @@ func _on_npc_player_pressed() -> void:
 	player_dialogue_range = true
 
 func _input(_event):
-	if Input.is_action_pressed('player_action'):
+	if Input.is_action_just_pressed('player_action'):
 		if player_dialogue_range:
-			#print('in range of dialogeu')
-			#print(dialogue_manager)
-			dialogue_manager.start('dialogue')
 			player_dialogue_range = false
+			talk_to_npc()
 
+#const DIALOGUE_MANAGER = preload("res://addons/dialogue/scenes/dialogue_manager.tscn")
+#const DIALOGUE = preload("res://addons/dialogue/scenes/dialogue.tscn")
 
+func talk_to_npc():
+	var manager = DIALOGUE_MANAGER.instantiate()
+	var dialogue_ui = DIALOGUE.instantiate()
+	
+	manager.position = Vector2(329,341)
+	manager.add_child(dialogue_ui) # dialogue_ui becomes a child of the manager
+	$CanvasLayer.add_child(manager) # manager goes into the scene
+	
+	manager.start("dialogue") # replace with your actual dialogue resource name
 
 func _on_level_door_body_entered(body: Node2D) -> void:
 	if body.is_in_group('player'):

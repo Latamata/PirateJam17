@@ -175,6 +175,7 @@ tile_set = SubResource("TileSet_hq1ik")
 position = Vector2(57, -20)
 
 [node name="Camera2D" type="Camera2D" parent="player"]
+zoom = Vector2(3, 3)
 
 [node name="dialogue_node" type="Node2D" parent="player"]
 position = Vector2(0, -6)

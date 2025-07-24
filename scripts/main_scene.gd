@@ -1,16 +1,15 @@
 extends Node2D
 
-@onready var crap_page = preload("res://scenes/enemy_pages.tscn")
-@onready var one_page = preload("res://scenes/enemy_pages.tscn")
+
 @onready var camera_2d: Camera2D = $player/Camera2D
 @onready var player: CharacterBody2D = $player
 @onready var dialogue_manager: Node2D = $dialogue_manager
 var player_dialogue_range = false
-
-func split_book_spawns(position_of_book: Vector2):
-	var musketman_instance = crap_page.instantiate()
-	musketman_instance.global_position = position_of_book
-	$enemy_group_node.add_child(musketman_instance)
+#
+#func split_book_spawns(position_of_book: Vector2):
+	#var musketman_instance = crap_page.instantiate()
+	#musketman_instance.global_position = position_of_book
+	#$enemy_group_node.add_child(musketman_instance)
 
 
 func _on_enemy_book_split_into_pages(book_position: Vector2) -> void:
@@ -24,8 +23,7 @@ func _on_enemy_book_split_into_pages(book_position: Vector2) -> void:
 		var row = i % column_height
 		var column = floori(float(i) / float(column_height))
 		var spawn_pos = starting_position + column * column_offset + row * row_offset
-		split_book_spawns(spawn_pos)
-
+		#split_book_spawns(spawn_pos)
 
 func _on_npc_player_pressed() -> void:
 	player_dialogue_range = true
@@ -38,8 +36,7 @@ func _input(_event):
 			dialogue_manager.start('dialogue')
 			player_dialogue_range = false
 
-func change_scene():
-	get_tree().change_scene_to_file("res://scenes/mountain_scene.tscn")
+
 
 func _on_level_door_body_entered(body: Node2D) -> void:
 	if body.is_in_group('player'):

@@ -1,8 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://cye54mo1aalao"]
-
-[ext_resource type="PackedScene" uid="uid://d1fapvm2ws4h0" path="res://scenes/enemy_pages.tscn" id="1_bdk73"]
-
-[node name="enemy_pages" instance=ExtResource("1_bdk73")]
-
-[node name="AnimatedSprite2D" parent="." index="0"]
-frame = 2

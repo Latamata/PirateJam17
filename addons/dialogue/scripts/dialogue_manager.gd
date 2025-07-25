@@ -3,8 +3,9 @@ extends Node
 # Signals
 signal showed_message(message: String, character_number: int)
 signal made_choice(choice: String, message: String)
+signal dialogue_closed
 
-# Exported Variables
+# Exported Variablesdialogue_closed
 @export_enum("Subtitle", "Text Box") var style: int = 0
 
 @export_group("Settings")
@@ -103,7 +104,7 @@ func advance_message():
 
 	if message_position >= messages.size():
 		queue_free()
-		print('running')
+		emit_signal('dialogue_closed')
 		return
 
 	var dialogue = messages[message_position].split(separator)

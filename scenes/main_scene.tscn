@@ -205,6 +205,7 @@ shape = SubResource("WorldBoundaryShape2D_c16ls")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [connection signal="split_into_pages" from="Enemy_book" to="." method="_on_enemy_book_split_into_pages"]
+[connection signal="player_exited" from="NPC" to="." method="_on_npc_player_exited"]
 [connection signal="player_pressed" from="NPC" to="." method="_on_npc_player_pressed"]
 [connection signal="body_entered" from="level_door" to="." method="_on_level_door_body_entered"]
 [connection signal="body_entered" from="world_boundry" to="." method="_on_world_boundry_body_entered"]

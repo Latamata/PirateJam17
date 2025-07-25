@@ -1,14 +1,11 @@
 extends Node2D
 
-
 @onready var camera_2d: Camera2D = $player/Camera2D
 @onready var player: CharacterBody2D = $player
 var player_dialogue_range = false
-#@onready var dialogue_manager: Node2D = $CanvasLayer/dialogue_manager
 const DIALOGUE_MANAGER = preload("res://addons/dialogue/scenes/dialogue_manager.tscn")
 const DIALOGUE = preload("res://addons/dialogue/scenes/dialogue.tscn")
-#func _ready() -> void:
-	#$CanvasLayer/dialogue_manager.start('dialogue')
+
 func _on_enemy_book_split_into_pages(book_position: Vector2) -> void:
 	var starting_position = Vector2(-200, -90)
 	var row_offset = Vector2(50, 0)
@@ -19,7 +16,6 @@ func _on_enemy_book_split_into_pages(book_position: Vector2) -> void:
 		var row = i % column_height
 		var column = floori(float(i) / float(column_height))
 		var spawn_pos = starting_position + column * column_offset + row * row_offset
-		#split_book_spawns(spawn_pos)
 
 func _on_npc_player_pressed() -> void:
 	player_dialogue_range = true
@@ -30,18 +26,17 @@ func _input(_event):
 			player_dialogue_range = false
 			talk_to_npc()
 
-#const DIALOGUE_MANAGER = preload("res://addons/dialogue/scenes/dialogue_manager.tscn")
-#const DIALOGUE = preload("res://addons/dialogue/scenes/dialogue.tscn")
-
+var active_dialogue_manager: Node = null
 func talk_to_npc():
+	if active_dialogue_manager: 
+		return
 	var manager = DIALOGUE_MANAGER.instantiate()
 	var dialogue_ui = DIALOGUE.instantiate()
-	
-	manager.position = Vector2(329,341)
-	manager.add_child(dialogue_ui) # dialogue_ui becomes a child of the manager
-	$CanvasLayer.add_child(manager) # manager goes into the scene
-	
-	manager.start("dialogue") # replace with your actual dialogue resource name
+	manager.position = Vector2(329, 341)
+	manager.add_child(dialogue_ui)
+	$CanvasLayer.add_child(manager)
+	manager.start("dialogue")
+	active_dialogue_manager = manager
 
 func _on_level_door_body_entered(body: Node2D) -> void:
 	if body.is_in_group('player'):
@@ -50,3 +45,9 @@ func _on_level_door_body_entered(body: Node2D) -> void:
 func _on_world_boundry_body_entered(body: Node2D) -> void:
 	if body.is_in_group('player'):
 		body.global_position = $player_spawn.global_position
+
+func _on_npc_player_exited() -> void:
+	player_dialogue_range = false
+	if active_dialogue_manager:
+		active_dialogue_manager.queue_free()
+		active_dialogue_manager = null

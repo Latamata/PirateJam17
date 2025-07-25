@@ -6,17 +6,6 @@ var player_dialogue_range = false
 const DIALOGUE_MANAGER = preload("res://addons/dialogue/scenes/dialogue_manager.tscn")
 const DIALOGUE = preload("res://addons/dialogue/scenes/dialogue.tscn")
 
-func _on_enemy_book_split_into_pages(book_position: Vector2) -> void:
-	var starting_position = Vector2(-200, -90)
-	var row_offset = Vector2(50, 0)
-	var column_offset = Vector2(50, 50)
-	var column_height = 2
-
-	for i in range(8):
-		var row = i % column_height
-		var column = floori(float(i) / float(column_height))
-		var spawn_pos = starting_position + column * column_offset + row * row_offset
-
 func _on_npc_player_pressed() -> void:
 	player_dialogue_range = true
 
@@ -34,7 +23,7 @@ func talk_to_npc():
 	var dialogue_ui = DIALOGUE.instantiate()
 	manager.position = Vector2(329, 341)
 	manager.add_child(dialogue_ui)
-	$CanvasLayer.add_child(manager)
+	$dialogue_layer.add_child(manager)
 	manager.start("dialogue")
 	active_dialogue_manager = manager
 

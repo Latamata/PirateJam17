@@ -1,10 +1,10 @@
 [gd_scene load_steps=15 format=4 uid="uid://bkyt6pj43x7yy"]
 
 [ext_resource type="Script" uid="uid://b161locme488k" path="res://scripts/main_scene.gd" id="1_pu3yx"]
+[ext_resource type="Texture2D" uid="uid://bcebtbrkx4hfd" path="res://assets/brackeys_platformer_assets/sprites/background_cloud.png" id="2_18nlu"]
 [ext_resource type="Texture2D" uid="uid://bn81d75fm5rj0" path="res://assets/brackeys_platformer_assets/sprites/world_tileset.png" id="4_rt2n2"]
 [ext_resource type="PackedScene" uid="uid://c7w2g3xl1aqus" path="res://scenes/player.tscn" id="5_gubc5"]
 [ext_resource type="PackedScene" uid="uid://b5ck805g5vt4h" path="res://scenes/platform.tscn" id="6_c16ls"]
-[ext_resource type="PackedScene" uid="uid://c647yt33cjux2" path="res://scenes/enemy_book.tscn" id="6_rt2n2"]
 [ext_resource type="Texture2D" uid="uid://cdwldu008kgfy" path="res://assets/brackeys_platformer_assets/sprites/background_one.png" id="7_18nlu"]
 [ext_resource type="PackedScene" uid="uid://bha8ramg7kpui" path="res://scenes/npc.tscn" id="7_c16ls"]
 
@@ -206,10 +206,20 @@ _data = {
 script = ExtResource("1_pu3yx")
 
 [node name="Parallax2D" type="ParallaxBackground" parent="."]
-follow_viewport_enabled = true
+
+[node name="Parallax2D" type="Parallax2D" parent="Parallax2D"]
+scroll_offset = Vector2(-719, 357)
+repeat_size = Vector2(1000, 0)
+autoscroll = Vector2(100, 0)
+repeat_times = 3
+follow_viewport = false
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D/Parallax2D"]
+position = Vector2(201, -441)
+texture = ExtResource("2_18nlu")
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="Parallax2D"]
-position = Vector2(220, -235)
+position = Vector2(292, 31)
 motion_mirroring = Vector2(1000, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="Parallax2D/ParallaxLayer"]
@@ -223,9 +233,7 @@ tile_set = SubResource("TileSet_hq1ik")
 position = Vector2(57, -20)
 
 [node name="Camera2D" type="Camera2D" parent="player"]
-
-[node name="Enemy_book" parent="." instance=ExtResource("6_rt2n2")]
-position = Vector2(54, 127)
+zoom = Vector2(2, 2)
 
 [node name="enemy_group_node" type="Node2D" parent="."]
 
@@ -252,7 +260,7 @@ shape = SubResource("WorldBoundaryShape2D_c16ls")
 
 [node name="player_spawn" type="Marker2D" parent="."]
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="dialogue_layer" type="CanvasLayer" parent="."]
 
 [node name="platform" parent="." instance=ExtResource("6_c16ls")]
 position = Vector2(434, 15)
@@ -263,7 +271,6 @@ libraries = {
 }
 autoplay = "up_down"
 
-[connection signal="split_into_pages" from="Enemy_book" to="." method="_on_enemy_book_split_into_pages"]
 [connection signal="player_exited" from="NPC" to="." method="_on_npc_player_exited"]
 [connection signal="player_pressed" from="NPC" to="." method="_on_npc_player_pressed"]
 [connection signal="body_entered" from="level_door" to="." method="_on_level_door_body_entered"]

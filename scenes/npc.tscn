@@ -4,8 +4,8 @@
 [ext_resource type="Script" uid="uid://7cxgc2squbc2" path="res://scripts/npc_script.gd" id="2_xxcha"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xxcha"]
-radius = 6.0
-height = 20.0
+radius = 3.0
+height = 14.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qhqgy"]
 atlas = ExtResource("1_ideak")
@@ -50,7 +50,7 @@ size = Vector2(35, 20)
 script = ExtResource("2_xxcha")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -4)
+position = Vector2(1, -4)
 shape = SubResource("CapsuleShape2D_xxcha")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

@@ -94,11 +94,12 @@ func start(chosen_dialogue: String):
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("player_action"):
+		print(message_position)
 		if style == 0 and not auto_skip and not selecting_choice.condition:
 			advance_message()
 		elif style == 1 and not auto_skip:
 			advance_message()
-
+		
 func advance_message():
 	message_position += 1
 
@@ -196,6 +197,7 @@ func refresh():
 	$TextBox.hide()
 
 func _on_click_detector_pressed() -> void:
+	#print('running')
 	if style == 0 and not auto_skip and not selecting_choice.condition:
 		advance_message()
 	elif style == 1 and not auto_skip:

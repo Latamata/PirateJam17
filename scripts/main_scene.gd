@@ -11,9 +11,10 @@ func _on_npc_player_pressed() -> void:
 
 func _input(_event):
 	if Input.is_action_just_pressed('player_action'):
+		print('running')
 		if player_dialogue_range:
 			player_dialogue_range = false
-			talk_to_npc()
+		talk_to_npc()
 
 var active_dialogue_manager: Node = null
 func talk_to_npc():
@@ -24,12 +25,8 @@ func talk_to_npc():
 	manager.position = Vector2(329, 341)
 	manager.add_child(dialogue_ui)
 	$dialogue_layer.add_child(manager)
-	manager.start("dialogue")
 	active_dialogue_manager = manager
-
-func _on_level_door_body_entered(body: Node2D) -> void:
-	if body.is_in_group('player'):
-		call_deferred('change_scene')
+	manager.start("dialogue")
 
 func _on_world_boundry_body_entered(body: Node2D) -> void:
 	if body.is_in_group('player'):

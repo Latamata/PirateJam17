@@ -52,3 +52,12 @@ shape = SubResource("RectangleShape2D_eon87")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_y2mej")
 frame_progress = 0.937962
+
+[node name="RayCastRight" type="RayCast2D" parent="."]
+position = Vector2(1, 6)
+target_position = Vector2(11, 0)
+
+[node name="RayCastLeft" type="RayCast2D" parent="."]
+position = Vector2(0, 6)
+rotation = -3.13951
+target_position = Vector2(11, 0)

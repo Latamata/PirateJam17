@@ -92,22 +92,23 @@ func start(chosen_dialogue: String):
 	else:
 		advance_message()
 
-func _process(delta: float) -> void:
+var input_blocked_frames = 2  # number of frames to skip input
+
+func _process(delta):
+	if input_blocked_frames > 0:
+		input_blocked_frames -= 1
+		return  # skip input handling
+
 	if Input.is_action_just_pressed("player_action"):
-		print(message_position)
-		if style == 0 and not auto_skip and not selecting_choice.condition:
-			advance_message()
-		elif style == 1 and not auto_skip:
-			advance_message()
-		
+		advance_message()
+
+
 func advance_message():
 	message_position += 1
-
 	if message_position >= messages.size():
 		queue_free()
 		emit_signal('dialogue_closed')
 		return
-
 	var dialogue = messages[message_position].split(separator)
 	var speaker = dialogue[0]
 	var text = dialogue[1]

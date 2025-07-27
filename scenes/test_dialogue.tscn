@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://bqxdpke8bkotu"]
+
+[ext_resource type="PackedScene" uid="uid://bmeiv1c8q5tey" path="res://addons/dialogue/scenes/dialogue_manager.tscn" id="1_4xk28"]
+[ext_resource type="Script" uid="uid://cugsaqptlxu6h" path="res://scripts/test_dialogue.gd" id="1_m88tv"]
+[ext_resource type="PackedScene" uid="uid://dnrcj1mhyy4b3" path="res://addons/dialogue/scenes/dialogue.tscn" id="2_m88tv"]
+
+[node name="test_dialogue" type="Node2D"]
+script = ExtResource("1_m88tv")
+
+[node name="dialogue_manager" parent="." instance=ExtResource("1_4xk28")]
+position = Vector2(558, 398)
+
+[node name="dialogue" parent="dialogue_manager" instance=ExtResource("2_m88tv")]

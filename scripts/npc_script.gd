@@ -6,7 +6,11 @@ signal player_exited
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group('player'):
-		emit_signal('player_pressed')
+		if body.quest_item_obtained:
+			get_tree().call_deferred("change_scene_to_file", "res://scenes/win_scene.tscn")
+
+		else:
+			emit_signal('player_pressed')
 
 func _on_area_2d_body_exited(body: Node2D) -> void:
 	if body.is_in_group('player'):

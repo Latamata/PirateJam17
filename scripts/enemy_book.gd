@@ -10,10 +10,16 @@ var target
 
 func _process(_delta):
 	if ray_cast_left.is_colliding():
+		var collider = ray_cast_left.get_collider()
+		if collider.is_in_group('player'):
+			collider.player_died_function()
 		direction *= -1
 	if ray_cast_right.is_colliding():
-		#print('helol')
+		var collider = ray_cast_right.get_collider()
+		if collider.is_in_group('player'):
+			collider.player_died_function()
 		direction *= -1
+
 	velocity = direction * SPEED
 	move_and_slide()
 

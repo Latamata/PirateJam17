@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://b5ck805g5vt4h"]
+[gd_scene load_steps=7 format=3 uid="uid://b5ck805g5vt4h"]
 
 [ext_resource type="Texture2D" uid="uid://cvgp7llvncyc3" path="res://assets/brackeys_platformer_assets/sprites/platforms.png" id="1_ba0x2"]
 
@@ -9,7 +9,46 @@ size = Vector2(30, 8)
 atlas = ExtResource("1_ba0x2")
 region = Rect2(16.0011, 0, 32.2851, 9.32037)
 
+[sub_resource type="Animation" id="Animation_c1pb6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(434, 15)]
+}
+
+[sub_resource type="Animation" id="Animation_18nlu"]
+resource_name = "up_down"
+length = 2.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(434, 15), Vector2(432, 106)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6wevv"]
+_data = {
+&"RESET": SubResource("Animation_c1pb6"),
+&"up_down": SubResource("Animation_18nlu")
+}
+
 [node name="platform" type="AnimatableBody2D"]
+position = Vector2(434, 15)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_nlgqw")
@@ -17,3 +56,9 @@ one_way_collision = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = SubResource("AtlasTexture_507ja")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_6wevv")
+}
+autoplay = "up_down"

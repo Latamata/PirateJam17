@@ -27,9 +27,6 @@ func talk_to_npc():
 	$dialogue_layer.add_child(manager)
 	active_dialogue_manager = manager
 
-
-
-
 func _on_world_boundry_body_entered(body: Node2D) -> void:
 	if body.is_in_group('player'):
 		body.global_position = $player_spawn.global_position
@@ -39,3 +36,6 @@ func _on_npc_player_exited() -> void:
 	if active_dialogue_manager:
 		active_dialogue_manager.queue_free()
 		active_dialogue_manager = null
+
+func _on_player_player_died() -> void:
+	player.global_position = $player_spawn.global_position

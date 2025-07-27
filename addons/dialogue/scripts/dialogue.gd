@@ -2,9 +2,10 @@ extends Node
 
 # Exported Variables
 @export_multiline var messages: PackedStringArray = [
-	"1;Hello!;1",
-	"2;There isnt time to talk!;1",
-	"1;What do you have to tell me?.;1",
-	"2;You are the only 'One' left!;1",
-	"2;How are you?;2;4;I'm good;I'm tired"
+	"1;Hey! Are you here about the document?;1",
+	"2;Yes, the GDD — it's the last one!;1",
+	"1;Where can I find it?;1",
+	"2;It's hidden deep in the ruins beyond the mountains.;1",
+	"2;You must retrieve it. The jam depends on it!;1",
+	"2;Will you accept this quest?;2;4;Absolutely;I need more time"
 ]

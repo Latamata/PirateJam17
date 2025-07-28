@@ -30,6 +30,7 @@ func _on_world_boundry_body_entered(body: Node2D) -> void:
 		body.queue_free()
 	if body.is_in_group('player'):
 		body.global_position = $player_spawn.global_position
+		body.quest_item_obtained = false
 	
 func _on_npc_player_exited() -> void:
 	player_dialogue_range = false

@@ -54,10 +54,10 @@ script = ExtResource("1_eon87")
 position = Vector2(0.5, 6)
 shape = SubResource("RectangleShape2D_eon87")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." groups=["enemy"]]
 sprite_frames = SubResource("SpriteFrames_y2mej")
 animation = &"run"
-frame_progress = 0.506735
+frame_progress = 0.589442
 
 [node name="RayCastRight" type="RayCast2D" parent="."]
 position = Vector2(1, 6)

@@ -10,15 +10,15 @@ size = Vector2(11, 12)
 atlas = ExtResource("2_eon87")
 region = Rect2(0, 0, 24, 24)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_y2mej"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_321xh"]
 atlas = ExtResource("2_eon87")
 region = Rect2(24, 0, 24, 24)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_b6xl6"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_o8lpl"]
 atlas = ExtResource("2_eon87")
 region = Rect2(48, 0, 24, 24)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_j4lbi"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_pdowi"]
 atlas = ExtResource("2_eon87")
 region = Rect2(72, 0, 24, 24)
 
@@ -27,18 +27,23 @@ animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_no1lm")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_y2mej")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_b6xl6")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_j4lbi")
 }],
 "loop": true,
 "name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_321xh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o8lpl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pdowi")
+}],
+"loop": true,
+"name": &"run",
 "speed": 5.0
 }]
 
@@ -51,7 +56,8 @@ shape = SubResource("RectangleShape2D_eon87")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_y2mej")
-frame_progress = 0.937962
+animation = &"run"
+frame_progress = 0.506735
 
 [node name="RayCastRight" type="RayCast2D" parent="."]
 position = Vector2(1, 6)

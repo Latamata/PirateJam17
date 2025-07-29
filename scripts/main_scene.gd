@@ -15,13 +15,14 @@ func _on_npc_player_pressed() -> void:
 func _input(_event):
 	if Input.is_action_just_pressed('player_action'):
 		talk_to_npc()
+		
 
 var active_dialogue_manager: Node = null
 func talk_to_npc():
 	if active_dialogue_manager: 
 		return
+	$quest_giver_sound.play()
 	var manager = TEST_DIALOGUE.instantiate()
-
 	$dialogue_layer.add_child(manager)
 	active_dialogue_manager = manager
 
@@ -29,16 +30,18 @@ func _on_world_boundry_body_entered(body: Node2D) -> void:
 	if body.is_in_group('enemy'):
 		body.queue_free()
 	if body.is_in_group('player'):
-		body.global_position = $player_spawn.global_position
+		player.player_died_function()
 		body.quest_item_obtained = false
 	
 func _on_npc_player_exited() -> void:
 	player_dialogue_range = false
 	if active_dialogue_manager:
+		$quest_giver_sound.stop()
 		active_dialogue_manager.queue_free()
 		active_dialogue_manager = null
 
 func _on_player_player_died() -> void:
+	#player.player_died_function()
 	player.global_position = $player_spawn.global_position
 
 func _on_timer_timeout() -> void:

@@ -12,6 +12,7 @@ func _process(delta):
 	if not is_on_floor():
 		velocity.y += gravity * delta
 	if Input.is_action_pressed("ui_accept") and (is_on_floor() or is_on_wall()) and can_jump:
+		$jump_sound.play()
 		velocity.y = jump_velocity
 		can_jump = false
 		$jump_timer.start()
@@ -31,6 +32,7 @@ func _process(delta):
 
 func player_died_function():
 	print('player died')
+	$dead_sound.play()
 	emit_signal('player_died')
 
 func _on_jump_timer_timeout() -> void:

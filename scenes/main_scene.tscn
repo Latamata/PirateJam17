@@ -291,7 +291,7 @@ tile_map_data = PackedByteArray("AAAAAAMAAgAAAAAAAAABAAMAAgAAAAAAAAACAAMAAgAAAAA
 tile_set = SubResource("TileSet_hq1ik")
 
 [node name="player" parent="." instance=ExtResource("5_gubc5")]
-position = Vector2(1669, -71)
+position = Vector2(0, 16)
 
 [node name="Camera2D" type="Camera2D" parent="player"]
 zoom = Vector2(3, 3)

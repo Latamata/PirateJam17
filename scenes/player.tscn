@@ -68,6 +68,7 @@ frame_progress = 0.406258
 
 [node name="jump_sound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_qhqgy")
+volume_db = -19.809
 
 [node name="dead_sound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_dqkch")

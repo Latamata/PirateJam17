@@ -31,7 +31,7 @@ func _process(delta):
 	move_and_slide()
 
 func player_died_function():
-	print('player died')
+	quest_item_obtained = false
 	$dead_sound.play()
 	emit_signal('player_died')
 
